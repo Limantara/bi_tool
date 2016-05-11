@@ -54,7 +54,13 @@ class PagesController < ActionController::Base
 private
 	def get_table
 		res = get_request 'http://localhost:8080/api'
-		JSON.parse(res.body)
+    empty_table = '{"header":[],"body":[]}'
+
+    if valid_json? res.body
+		  JSON.parse(res.body) 
+    else  
+      JSON.parse(empty_table)
+    end
 	end	
 
 	def get_request url
@@ -64,4 +70,13 @@ private
 		  http.request(req)
 		}
 	end
+
+  def valid_json?(json)
+    begin
+      JSON.parse(json)
+      return true
+    rescue JSON::ParserError => e
+      return false
+    end
+  end
 end
