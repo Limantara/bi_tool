@@ -29,6 +29,20 @@ class PagesController < ActionController::Base
 		redirect_to :action => 'tables'
   end
 
+  def add_dimension
+    dimension = params[:dimension]
+    get_request "http://localhost:8080/api/add/#{dimension}"
+    redirect_to :action => 'tables'
+
+  end
+
+  def remove_dimension
+    dimension = params[:dimension]
+    get_request "http://localhost:8080/api/remove/#{dimension}"
+    redirect_to :action => 'tables'
+
+  end  
+
 private
 	def get_table
 		res = get_request 'http://localhost:8080/api'

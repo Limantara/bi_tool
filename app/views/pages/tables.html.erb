@@ -51,31 +51,35 @@
                         </div>
                         <div class="panel-body">
                             <%= form_tag '/rollup' do %>
-                                Roll Up 
-                                <% @dimensions.each do |dimension| %>
-                                    <label class="radio-inline"><input type="radio" name="dimension" value="<%= dimension %>"><%= dimension %></label>
-                                <% end %>
-                                <button type="submit">Submit</button>
+                            Roll Up
+                            <% @dimensions.each do |dimension| %>
+                            <label class="radio-inline"><input type="radio" name="dimension" value="<%= dimension %>"><%= dimension %></label>
+                            <% end %>
+                            <button type="submit">Submit</button>
                             <% end %>
                             <%= form_tag '/drilldown' do %>
-                                Drill Down 
-                                <% @dimensions.each do |dimension| %>
-                                    <label class="radio-inline"><input type="radio" name="dimension" value="<%= dimension %>"><%= dimension %></label>
-                                <% end %>
-                                <button type="submit">Submit</button>
+                            Drill Down
+                            <% @dimensions.each do |dimension| %>
+                            <label class="radio-inline"><input type="radio" name="dimension" value="<%= dimension %>"><%= dimension %></label>
                             <% end %>
-
+                            <button type="submit">Submit</button>
+                            <% end %>
                             <hr>
-
-                            <form id="add_dimension" action="">
-                                Add Dimension
-                            </form>
-                            <form id="remove_dimension" action="">
-                                Remove Dimension
-                            </form>
-
+                            <%= form_tag '/add_dimension' do %>
+                            Add Dimension
+                            <% @dimensions.each do |dimension| %>
+                            <label class="radio-inline"><input type="radio" name="dimension" value="<%= dimension %>"><%= dimension %></label>
+                            <% end %>
+                            <button type="submit">Submit</button>
+                            <% end %>
+                            <%= form_tag '/remove_dimension' do %>
+                            Remove Dimension
+                            <% @dimensions.each do |dimension| %>
+                            <label class="radio-inline"><input type="radio" name="dimension" value="<%= dimension %>"><%= dimension %></label>
+                            <% end %>
+                            <button type="submit">Submit</button>
+                            <% end %>
                             <hr>
-
                             <form id="slice" action="">
                                 Slice
                             </form>
@@ -85,7 +89,6 @@
                             
                         </div>
                     </div>
-
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
