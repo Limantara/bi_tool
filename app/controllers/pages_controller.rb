@@ -14,16 +14,46 @@ class PagesController < ActionController::Base
 
   def tables
 		@table = get_table
-		@dimensions = ["Accounts", "Dates", "Cardproducts"]
+		@dimensions = ["Account", "Date", "Cardproducts"]
   end
+
+  def rollup 
+  	dimension = params[:dimension]
+  	get_request "http://localhost:8080/api/rollup/#{dimension}"
+		redirect_to :action => 'tables'
+  end
+
+  def drilldown
+  	dimension = params[:dimension]
+  	get_request "http://localhost:8080/api/drilldown/#{dimension}"
+		redirect_to :action => 'tables'
+  end
+
+  def add_dimension
+    dimension = params[:dimension]
+    get_request "http://localhost:8080/api/add/#{dimension}"
+    redirect_to :action => 'tables'
+
+  end
+
+  def remove_dimension
+    dimension = params[:dimension]
+    get_request "http://localhost:8080/api/remove/#{dimension}"
+    redirect_to :action => 'tables'
+
+  end  
 
 private
 	def get_table
-		url = URI.parse('http://localhost:8080/api')
+		res = get_request 'http://localhost:8080/api'
+		JSON.parse(res.body)
+	end	
+
+	def get_request url
+		url = URI.parse(url)
   	req = Net::HTTP::Get.new(url.to_s)
 		res = Net::HTTP.start(url.host, url.port) {|http|
 		  http.request(req)
 		}
-		JSON.parse(res.body)
-	end	
+	end
 end
