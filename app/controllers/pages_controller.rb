@@ -12,8 +12,8 @@ class PagesController < ActionController::Base
   def charts
   end
 
-  def tables
-		@table = get_table
+  def tables 
+  	@table = get_table
 		@dimensions = ["Account", "Date", "Cardproducts"]
   end
 
@@ -27,6 +27,14 @@ class PagesController < ActionController::Base
   	dimension = params[:dimension]
   	get_request "http://localhost:8080/api/drilldown/#{dimension}"
 		redirect_to :action => 'tables'
+  end
+
+  def slice
+  	dimension = params[:dimension]
+  	where1 = params[:where1]
+  	where1Value = params[:where1Value]
+  	res = get_request "http://localhost:8080/api/slice/#{dimension}/#{where1}/#{where1Value}"
+  	redirect_to :action => 'tables', :table => res.body
   end
 
 private

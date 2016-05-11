@@ -84,6 +84,15 @@
                             <form id="slice" action="">
                                 Slice
                             </form>
+                            <%= form_tag '/slice' do %>
+                                <% @dimensions.each do |dimension| %>
+                                    <label class="radio-inline"><input type="radio" name="dimension" value="<%= dimension %>"><%= dimension %></label>
+                                <% end %>
+                                <br>
+                                Attribute: <input type="text" name="where1"></input>
+                                Value: <input type="text" name="where1Value"></input>
+                                <button type="submit">Submit</button>
+                            <% end %>
                             <form id="dice" action="">
                                 Dice
                             </form>

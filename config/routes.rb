@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'tables' => 'pages#tables'
   post 'rollup' => 'pages#rollup'
   post 'drilldown' => 'pages#drilldown'
+  post 'slice' => 'pages#slice'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
