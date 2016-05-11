@@ -14,6 +14,7 @@ class PagesController < ActionController::Base
 
   def tables
 		@table = get_table
+		@dimensions = ["Accounts", "Dates", "Cardproducts"]
   end
 
 private
