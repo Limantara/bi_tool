@@ -92,9 +92,20 @@
                                 Value: <input type="text" name="where1Value"></input>
                                 <button type="submit">Submit</button>
                             <% end %>
+
                             <form id="dice" action="">
                                 Dice
                             </form>
+                            <%= form_tag '/dice' do %>
+                                <br>
+                                Attribute: <input type="text" name="where1"></input>
+                                Value: <input type="text" name="where1Value"></input>
+                                <br>
+                                Attribute: <input type="text" name="where2"></input>
+                                Value: <input type="text" name="where2Value"></input>
+                                <button type="submit">Submit</button>
+                            <% end %>
+
                             
                         </div>
                     </div>
