@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root 'pages#index'
   get 'charts' => 'pages#charts'
   get 'tables' => 'pages#tables'
+  post 'rollup' => 'pages#rollup'
+  post 'drilldown' => 'pages#drilldown'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
