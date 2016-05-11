@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'rollup' => 'pages#rollup'
   post 'drilldown' => 'pages#drilldown'
   post 'slice' => 'pages#slice'
+  post 'dice' => 'pages#dice'
 
   post 'add_dimension' => 'pages#add_dimension'
   post 'remove_dimension' => 'pages#remove_dimension'

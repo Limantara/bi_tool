@@ -37,6 +37,16 @@ class PagesController < ActionController::Base
   	redirect_to :action => 'tables', :table => res.body
   end
 
+  def dice
+    dimension = params[:dimension]
+    where1 = params[:where1]
+    where1Value = params[:where1Value]
+    where2 = params[:where2]
+    where2Value = params[:where2Value]
+    res = get_request "http://localhost:8080/api/slice/#{dimension}/#{where1}/#{where1Value}/#{where2}/#{where2Value}"
+    redirect_to :action => 'tables', :table => res.body
+  end
+
   def add_dimension
     dimension = params[:dimension]
     get_request "http://localhost:8080/api/add/#{dimension}"
