@@ -43,7 +43,7 @@ class PagesController < ActionController::Base
     where1Value = params[:where1Value]
     where2 = params[:where2]
     where2Value = params[:where2Value]
-    res = get_request "http://localhost:8080/api/slice/#{dimension}/#{where1}/#{where1Value}/#{where2}/#{where2Value}"
+    res = get_request "http://localhost:8080/api/dice/#{where1}/#{where1Value}/#{where2}/#{where2Value}"
     redirect_to :action => 'tables', :table => res.body
   end
 
